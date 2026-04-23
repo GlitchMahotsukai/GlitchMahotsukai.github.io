@@ -24,3 +24,10 @@ defaultContentLanguage = 'zh'
 # 输出配置
 [outputs]
   home = ["HTML", "RSS"]
+
+# 确保静态文件正确复制
+[build]
+  writeStats = true
+
+# 禁用不必要的 Kind
+disableKinds = ["taxonomy", "term"]
