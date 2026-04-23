@@ -7,6 +7,13 @@ public_folder: "/images"
 
 locale: "zh"
 
+# 关键：告诉 Decap CMS 配置文件的位置
+site_url: https://glitchmahotsukai.netlify.app/
+display_url: https://glitchmahotsukai.netlify.app/
+
+# 日志级别
+log_level: debug
+
 collections:
   - name: "posts"
     label: "博客文章"
