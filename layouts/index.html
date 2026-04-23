@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Site.Title }}</title>
+  <style>
+    body {
+      font-family: monospace;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #fff;
+      color: #333;
+      line-height: 1.8;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1.2em;
+      margin-top: 30px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .lang-switch {
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .lang-switch a {
+      margin-right: 10px;
+      padding: 5px 10px;
+      background: #f0f0f0;
+      border-radius: 3px;
+    }
+    .post-date {
+      color: #666;
+      font-size: 0.9em;
+    }
+    .media-link {
+      color: #008800;
+    }
+    footer {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      color: #666;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <!-- 语言切换 -->
+  <div class="lang-switch">
+    {{ range .Site.Languages }}
+      <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
+    {{ end }}
+  </div>
+
+  <h1>{{ .Site.Title }}</h1>
+
+  <!-- 最新文章列表 -->
+  <h2>📝 最新文章</h2>
+  <ul>
+    {{ range first 10 .Site.RegularPages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span class="post-date">({{ .Date.Format "2006-01-02" }})</span>
+        {{ if .Params.image }}
+          <span class="media-link"> [📷 图片]</span>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+
+  <!-- 多媒体内容 -->
+  <h2>🎬 多媒体内容</h2>
+  <ul>
+    <li><a href="/tags/video/">📹 视频</a></li>
+    <li><a href="/tags/audio/">🎵 音频</a></li>
+    <li><a href="/tags/gallery/">📷 图片集</a></li>
+  </ul>
+
+  <!-- 页面链接 -->
+  <h2>📄 页面</h2>
+  <ul>
+    {{ range .Site.Pages }}
+      {{ if eq .Section "pages" }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    {{ end }}
+  </ul>
+
+  <footer>
+    <p>© {{ now.Year }} {{ .Site.Title }} | Powered by Hugo</p>
+  </footer>
+</body>
+</html>

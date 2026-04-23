@@ -1,0 +1,26 @@
+baseURL = 'https://your-domain.dnshe.com/'
+title = '我的博客'
+
+# 多语言配置
+defaultContentLanguage = 'zh'
+[languages]
+  [languages.zh]
+    title = '我的博客'
+    weight = 1
+    contentDir = 'content/zh'
+    languageName = '中文'
+  [languages.en]
+    title = 'My Blog'
+    weight = 2
+    contentDir = 'content/en'
+    languageName = 'English'
+
+# 多媒体相关配置
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许 HTML 嵌入（用于视频/音频嵌入）
+
+# 输出配置
+[outputs]
+  home = ["HTML", "RSS"]

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <style>
+    body {
+      font-family: monospace;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      background: #fff;
+      color: #333;
+      line-height: 1.8;
+    }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.5em; margin-bottom: 10px; }
+    .meta { color: #666; font-size: 0.9em; margin-bottom: 30px; }
+    .content { margin-top: 30px; }
+    .content img { max-width: 100%; height: auto; }
+    .content video, .content iframe { max-width: 100%; }
+    .back { margin-top: 40px; }
+    .lang-switch { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #eee; }
+    .lang-switch a { margin-right: 10px; padding: 5px 10px; background: #f0f0f0; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <div class="lang-switch">
+    {{ range .Site.Languages }}
+      <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
+    {{ end }}
+  </div>
+
+  <h1>{{ .Title }}</h1>
+  <div class="meta">
+    {{ .Date.Format "2006-01-02" }} | {{ .Params.author | default "管理员" }}
+    {{ with .Params.tags }} | 标签：{{ delimit . ", " }}{{ end }}
+  </div>
+
+  <div class="content">
+    {{ .Content }}
+  </div>
+
+  <div class="back">
+    <a href="/">← 返回首页</a>
+  </div>
+</body>
+</html>
