@@ -1,15 +1,14 @@
 ---
-title: "欢迎来到我的博客"
+title: "欢迎"
 date: 2026-04-23T18:00:00+08:00
 author: "管理员"
 tags: ["欢迎", "公告"]
-image: ""
 draft: false
 ---
 
-你好！这是我的个人博客。
+你好。这是我的博客。
 
-## 📸 图片展示
+## 图片展示
 
 你可以这样插入图片：
 
@@ -19,25 +18,25 @@ draft: false
 
 <img src="/images/example.jpg" alt="示例" style="max-width: 100%;">
 
-## 📹 视频嵌入
+## 视频嵌入
 
 ### YouTube 视频
 ```html
 <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed/VIDEO_ID" 
+  src="https://www.youtube.com/embed/视频 ID" 
   frameborder="0" allowfullscreen>
 </iframe>
 ```
 
 ### B 站视频
 ```html
-<iframe src="//player.bilibili.com/player.html?bvid=BVID" 
+<iframe src="//player.bilibili.com/player.html?bvid=视频 BVID" 
   scrolling="no" border="0" frameborder="no" 
   width="100%" height="500">
 </iframe>
 ```
 
-## 🎵 音频嵌入
+## 音频嵌入
 
 ```html
 <audio controls>
@@ -46,11 +45,11 @@ draft: false
 </audio>
 ```
 
-## 🔗 超链接
+## 超链接
 
 - [外部链接](https://example.com)
 - [内部链接](/about/)
 
 ---
 
-你可以在管理后台轻松编辑这些内容！
+你可以在管理后台轻松编辑这些内容。

@@ -1,15 +1,14 @@
 ---
-title: "Welcome to My Blog"
+title: "Welcome"
 date: 2026-04-23T18:00:00+08:00
 author: "Admin"
 tags: ["welcome", "announcement"]
-image: ""
 draft: false
 ---
 
-Hello! This is my personal blog.
+Welcome to my blog.
 
-## 📸 Image Display
+## Image Display
 
 You can insert images like this:
 
@@ -19,7 +18,7 @@ Or use HTML:
 
 <img src="/images/example.jpg" alt="Example" style="max-width: 100%;">
 
-## 📹 Video Embed
+## Video Embed
 
 ### YouTube Video
 ```html
@@ -31,13 +30,13 @@ Or use HTML:
 
 ### Bilibili Video
 ```html
-<iframe src="//player.bilibili.com/player.html?bvid=BVID" 
+<iframe src="//player.bilibili.com/player.html?bvid=VIDEO_BVID" 
   scrolling="no" border="0" frameborder="no" 
   width="100%" height="500">
 </iframe>
 ```
 
-## 🎵 Audio Embed
+## Audio Embed
 
 ```html
 <audio controls>
@@ -46,11 +45,11 @@ Or use HTML:
 </audio>
 ```
 
-## 🔗 Links
+## Links
 
 - [External Link](https://example.com)
 - [Internal Link](/about/)
 
 ---
 
-You can easily edit content in the admin panel!
+You can edit content in the admin panel.

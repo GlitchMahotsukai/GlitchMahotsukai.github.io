@@ -5,110 +5,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Site.Title }}</title>
   <style>
-    body {
-      font-family: monospace;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background: #fff;
-      color: #333;
-      line-height: 1.8;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+      background: #fff;
+      color: #000;
+      padding: 20px;
+    }
+    
     a {
-      color: #0066cc;
+      color: #000;
       text-decoration: none;
     }
+    
     a:hover {
       text-decoration: underline;
+      color: #333;
     }
-    h1 {
-      font-size: 1.5em;
+    
+    .container {
+      max-width: 100%;
+      margin: 0;
+    }
+    
+    .header {
       margin-bottom: 20px;
     }
-    h2 {
-      font-size: 1.2em;
-      margin-top: 30px;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+    
+    .header h1 {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 10px;
     }
-    ul {
-      list-style: none;
-      padding-left: 20px;
-    }
-    li {
-      margin: 8px 0;
-    }
+    
     .lang-switch {
-      margin-bottom: 20px;
-      padding: 10px 0;
-      border-bottom: 1px solid #eee;
+      margin-bottom: 15px;
     }
+    
     .lang-switch a {
-      margin-right: 10px;
-      padding: 5px 10px;
-      background: #f0f0f0;
-      border-radius: 3px;
+      margin-right: 5px;
+      padding: 2px 5px;
     }
+    
+    .lang-switch a.current {
+      background: #000;
+      color: #fff;
+    }
+    
+    .nav-section {
+      margin-bottom: 15px;
+    }
+    
+    .nav-title {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0;
+    }
+    
+    .nav-links a {
+      padding: 2px 0;
+    }
+    
+    .nav-links a:not(:last-child)::after {
+      content: "|";
+      margin: 0 8px;
+      color: #666;
+    }
+    
+    .post-list {
+      list-style: none;
+      margin: 15px 0;
+    }
+    
+    .post-list li {
+      margin-bottom: 8px;
+      display: flex;
+      align-items: baseline;
+    }
+    
     .post-date {
       color: #666;
-      font-size: 0.9em;
+      font-size: 12px;
+      margin-right: 10px;
+      min-width: 85px;
     }
-    .media-link {
-      color: #008800;
+    
+    .post-title a {
+      color: #000;
     }
-    footer {
-      margin-top: 50px;
-      padding-top: 20px;
-      border-top: 1px solid #ccc;
+    
+    .content {
+      margin: 20px 0;
+    }
+    
+    .content h1 {
+      font-size: 18px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+    
+    .content h2 {
+      font-size: 16px;
+      font-weight: normal;
+      margin: 20px 0 10px 0;
+    }
+    
+    .content p {
+      margin-bottom: 15px;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+    }
+    
+    .content pre {
+      background: #f5f5f5;
+      padding: 10px;
+      overflow-x: auto;
+      margin: 10px 0;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    .content code {
+      font-family: monospace;
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 2px 4px;
+    }
+    
+    .back-link {
+      margin-top: 20px;
+      padding-top: 10px;
+    }
+    
+    .back-link a {
       color: #666;
-      font-size: 0.9em;
+    }
+    
+    footer {
+      margin-top: 30px;
+      padding-top: 10px;
+      color: #666;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
-  <!-- 语言切换 -->
-  <div class="lang-switch">
-    {{ range .Site.Languages }}
-      <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
-    {{ end }}
-  </div>
-
-  <h1>{{ .Site.Title }}</h1>
-
-  <!-- 最新文章列表 -->
-  <h2>📝 最新文章</h2>
-  <ul>
-    {{ range first 10 .Site.RegularPages }}
-      <li>
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-        <span class="post-date">({{ .Date.Format "2006-01-02" }})</span>
-        {{ if .Params.image }}
-          <span class="media-link"> [📷 图片]</span>
+  <div class="container">
+    <div class="header">
+      <h1>{{ .Site.Title }}</h1>
+      
+      <!-- 语言切换 -->
+      <div class="lang-switch">
+        {{ range .Site.Languages }}
+          {{ if eq .Lang $.Site.Language.Lang }}
+            <span class="current">{{ .LanguageName }}</span>
+          {{ else }}
+            <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
+          {{ end }}
         {{ end }}
-      </li>
+      </div>
+    </div>
+
+    <!-- 最新文章 -->
+    <div class="nav-section">
+      <div class="nav-title">Articles</div>
+      <div class="nav-links">
+        {{ range first 20 .Site.RegularPages }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- 页面链接 -->
+    <div class="nav-section">
+      <div class="nav-title">Pages</div>
+      <div class="nav-links">
+        {{ range .Site.Pages }}
+          {{ if eq .Section "pages" }}
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+
+    <!-- 标签 -->
+    {{ if .Site.Taxonomies.tags }}
+    <div class="nav-section">
+      <div class="nav-title">Tags</div>
+      <div class="nav-links">
+        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+          <a href="/tags/{{ $name | urlize }}/">{{ $name }}</a>
+        {{ end }}
+      </div>
+    </div>
     {{ end }}
-  </ul>
 
-  <!-- 多媒体内容 -->
-  <h2>🎬 多媒体内容</h2>
-  <ul>
-    <li><a href="/tags/video/">📹 视频</a></li>
-    <li><a href="/tags/audio/">🎵 音频</a></li>
-    <li><a href="/tags/gallery/">📷 图片集</a></li>
-  </ul>
-
-  <!-- 页面链接 -->
-  <h2>📄 页面</h2>
-  <ul>
-    {{ range .Site.Pages }}
-      {{ if eq .Section "pages" }}
-        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-      {{ end }}
-    {{ end }}
-  </ul>
-
-  <footer>
-    <p>© {{ now.Year }} {{ .Site.Title }} | Powered by Hugo</p>
-  </footer>
+    <footer>
+      <p>Powered by Hugo</p>
+    </footer>
+  </div>
 </body>
 </html>
