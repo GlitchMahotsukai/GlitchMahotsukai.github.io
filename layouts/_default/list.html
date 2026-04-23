@@ -1,134 +1,42 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", sans-serif;
-      font-size: 14px;
-      line-height: 1.8;
-      background: #fff;
-      color: #000;
-      padding: 20px;
-    }
-    
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-    
-    a:hover {
-      text-decoration: underline;
-      color: #333;
-    }
-    
-    .container {
-      max-width: 100%;
-    }
-    
-    .header {
-      margin-bottom: 20px;
-    }
-    
-    .header h1 {
-      font-size: 18px;
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
-    
-    .lang-switch {
-      margin-bottom: 15px;
-    }
-    
-    .lang-switch a {
-      margin-right: 5px;
-      padding: 2px 5px;
-    }
-    
-    .lang-switch a.current {
-      background: #000;
-      color: #fff;
-    }
-    
-    .post-list {
-      list-style: none;
-      margin: 15px 0;
-    }
-    
-    .post-list li {
-      margin-bottom: 8px;
-      display: flex;
-      align-items: baseline;
-    }
-    
-    .post-date {
-      color: #666;
-      font-size: 12px;
-      margin-right: 10px;
-      min-width: 85px;
-    }
-    
-    .post-title a {
-      color: #000;
-    }
-    
-    .back-link {
-      margin-top: 20px;
-      padding-top: 10px;
-    }
-    
-    .back-link a {
-      color: #666;
-    }
-    
-    footer {
-      margin-top: 30px;
-      padding-top: 10px;
-      color: #666;
-      font-size: 12px;
-    }
-  </style>
+<title>{{ .Title }} - {{ .Site.Title }}</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+BODY {max-width: 95ch; margin: auto; padding: 0.5em;}
+.heading { text-align: center; }
+.small  { font-size: 90%;}
+dd { margin: 2px 0 1em; }
+.lang-switch { text-align: right; margin-bottom: 0.5em; }
+.lang-switch a { text-decoration: none; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>{{ .Title }}</h1>
-      
-      <div class="lang-switch">
-        {{ range .Site.Languages }}
-          {{ if eq .Lang $.Site.Language.Lang }}
-            <span class="current">{{ .LanguageName }}</span>
-          {{ else }}
-            <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
-          {{ end }}
-        {{ end }}
-      </div>
-    </div>
 
-    <ul class="post-list">
-      {{ range .Pages }}
-        <li>
-          <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
-          <span class="post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></span>
-        </li>
-      {{ end }}
-    </ul>
+<p class="lang-switch">
+{{ range .Site.Languages }}
+  {{ if eq .Lang $.Site.Language.Lang }}
+    <strong>{{ .LanguageName }}</strong>
+  {{ else }}
+    <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
+  {{ end }}
+{{ end }}
+</p>
 
-    <div class="back-link">
-      <a href="/">← Back to index</a>
-    </div>
+<h1 class="heading">{{ .Title }}</h1>
 
-    <footer>
-      <p>Powered by Hugo</p>
-    </footer>
-  </div>
+<dl>
+{{ range .Pages }}
+<dt><strong><a href="{{ .RelPermalink }}">{{ .Title }}</a></strong></dt>
+<dd class="small">{{ .Date.Format "2006-01-02" }}</dd>
+{{ end }}
+</dl>
+
+<p><a href="/">← Back to index</a></p>
+
+<p class="heading"><small>Powered by Hugo</small></p>
+
 </body>
 </html>
