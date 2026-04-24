@@ -14,11 +14,11 @@ dd { margin: 2px 0 1em; }
 <body>
 
 <p style="text-align: right;">
-<a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Language.LanguageName }}</a>
+{{ .Site.Language.LanguageName }}
 |
 {{ range .Site.Languages }}
 {{ if ne .Lang $.Site.Language.Lang }}
-<a href="{{ .RelPermalink }}">{{ .LanguageName }}</a>
+<a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
 {{ end }}
 {{ end }}
 </p>
@@ -58,39 +58,21 @@ dd { margin: 2px 0 1em; }
 </td>
 <td>
 
-{{ if eq .Site.Language.Lang "zh" }}
+{{ $currentPageLang := .Site.Language.Lang }}
 
-{{ $posts := where .Site.RegularPages "Section" "posts" | where "Lang" .Site.Language.Lang }}
+{{ $posts := slice }}
+{{ range .Site.RegularPages }}
+{{ if and (eq .Section "posts") (eq .Lang $currentPageLang) }}
+{{ $posts = $posts | append . }}
+{{ end }}
+{{ end }}
 {{ with $posts }}
 <dl>
+{{ if eq $currentPageLang "zh" }}
 <dt><strong><a href="/zh/posts/">文章</a></strong></dt>
-<dd class="small">
-{{ range first 10 . }}
-<a href="{{ .RelPermalink }}">{{ .Title }}</a>;
-{{ end }}
-...
-</dd>
-</dl>
-{{ end }}
-
-{{ $media := where .Site.RegularPages "Section" "media" | where "Lang" .Site.Language.Lang }}
-{{ with $media }}
-<dl>
-<dt><strong><a href="/zh/media/">媒体</a></strong></dt>
-<dd class="small">
-{{ range . }}
-<a href="{{ .RelPermalink }}">{{ .Title }}</a>;
-{{ end }}
-</dd>
-</dl>
-{{ end }}
-
 {{ else }}
-
-{{ $posts := where .Site.RegularPages "Section" "posts" | where "Lang" .Site.Language.Lang }}
-{{ with $posts }}
-<dl>
 <dt><strong><a href="/en/posts/">Posts</a></strong></dt>
+{{ end }}
 <dd class="small">
 {{ range first 10 . }}
 <a href="{{ .RelPermalink }}">{{ .Title }}</a>;
@@ -100,18 +82,25 @@ dd { margin: 2px 0 1em; }
 </dl>
 {{ end }}
 
-{{ $media := where .Site.RegularPages "Section" "media" | where "Lang" .Site.Language.Lang }}
+{{ $media := slice }}
+{{ range .Site.RegularPages }}
+{{ if and (eq .Section "media") (eq .Lang $currentPageLang) }}
+{{ $media = $media | append . }}
+{{ end }}
+{{ end }}
 {{ with $media }}
 <dl>
+{{ if eq $currentPageLang "zh" }}
+<dt><strong><a href="/zh/media/">媒体</a></strong></dt>
+{{ else }}
 <dt><strong><a href="/en/media/">Media</a></strong></dt>
+{{ end }}
 <dd class="small">
 {{ range . }}
 <a href="{{ .RelPermalink }}">{{ .Title }}</a>;
 {{ end }}
 </dd>
 </dl>
-{{ end }}
-
 {{ end }}
 
 </td>
