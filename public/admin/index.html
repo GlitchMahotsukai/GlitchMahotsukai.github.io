@@ -7,8 +7,14 @@
     <title>博客管理后台</title>
     <!-- Netlify Identity -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Decap CMS 挂载点 -->
+    <div id="root"></div>
+    
     <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
     <script>
       // 当用户登录后重定向到管理后台
       if (window.netlifyIdentity) {
@@ -21,7 +27,5 @@
         });
       }
     </script>
-  </head>
-  <body>
   </body>
 </html>
