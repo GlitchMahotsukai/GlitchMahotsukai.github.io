@@ -14,13 +14,9 @@ dd { margin: 2px 0 1em; }
 <body>
 
 <p style="text-align: right;">
-{{ .Site.Language.LanguageName }}
+<a href="{{ .Site.BaseURL }}zh/">中文</a>
 |
-{{ range .Site.Languages }}
-{{ if ne .Lang $.Site.Language.Lang }}
-<a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
-{{ end }}
-{{ end }}
+<a href="{{ .Site.BaseURL }}en/">English</a>
 </p>
 
 <h1 class="heading">{{ .Site.Title }}</h1>

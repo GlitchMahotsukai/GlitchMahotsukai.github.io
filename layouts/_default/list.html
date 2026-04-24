@@ -9,20 +9,14 @@ BODY {max-width: 95ch; margin: auto; padding: 0.5em;}
 .heading { text-align: center; }
 .small  { font-size: 90%;}
 dd { margin: 2px 0 1em; }
-.lang-switch { text-align: right; margin-bottom: 0.5em; }
-.lang-switch a { text-decoration: none; }
 </style>
 </head>
 <body>
 
-<p class="lang-switch">
-{{ range .Site.Languages }}
-  {{ if eq .Lang $.Site.Language.Lang }}
-    <strong>{{ .LanguageName }}</strong>
-  {{ else }}
-    <a href="/{{ .Lang }}/">{{ .LanguageName }}</a>
-  {{ end }}
-{{ end }}
+<p style="text-align: right;">
+<a href="{{ .Site.BaseURL }}zh/">中文</a>
+|
+<a href="{{ .Site.BaseURL }}en/">English</a>
 </p>
 
 <h1 class="heading">{{ .Title }}</h1>
@@ -34,7 +28,7 @@ dd { margin: 2px 0 1em; }
 {{ end }}
 </dl>
 
-<p><a href="/">← Back to index</a></p>
+<p><a href="{{ .Site.BaseURL }}{{ .Site.Language.Lang }}/">← Back to index</a></p>
 
 <p class="heading"><small>Powered by Hugo</small></p>
 
