@@ -9,10 +9,8 @@ BODY {max-width: 95ch; margin: auto; padding: 0.5em;}
 .heading { text-align: center; }
 .small  { font-size: 90%;}
 dd { margin: 2px 0 1em; }
-.lang-nav a { text-decoration: underline; color: #0000cc; }
-.lang-nav a:visited { color: #0000cc; }
-.lang-nav a:link, .lang-nav a:visited, .lang-nav a:hover, .lang-nav a:active { color: #0000cc; text-decoration: underline; }
-p[style*="text-align: right"] a:link, p[style*="text-align: right"] a:visited, p[style*="text-align: right"] a:hover, p[style*="text-align: right"] a:active { color: #0000cc; text-decoration: underline; }
+a, a:link, a:visited, a:hover, a:active { color: #0000cc; text-decoration: underline; }
+a.clicked-temp { color: #660099 !important; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -108,6 +106,15 @@ p[style*="text-align: right"] a:link, p[style*="text-align: right"] a:visited, p
 </table>
 
 <p class="heading"><small>Powered by Hugo</small></p>
-
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function () {
+  var links = document.querySelectorAll("a");
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", function () {
+      this.classList.add("clicked-temp");
+    });
+  }
+});
+</script>
 </body>
 </html>
