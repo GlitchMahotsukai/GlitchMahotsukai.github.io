@@ -14,9 +14,13 @@ dd { margin: 2px 0 1em; }
 <body>
 
 <p style="text-align: right;">
-<a href="/zh/">中文</a>
+<a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Language.LanguageName }}</a>
 |
-<a href="/en/">English</a>
+{{ range .Site.Languages }}
+{{ if ne .Lang $.Site.Language.Lang }}
+<a href="{{ .RelPermalink }}">{{ .LanguageName }}</a>
+{{ end }}
+{{ end }}
 </p>
 
 <h1 class="heading">{{ .Site.Title }}</h1>
@@ -45,8 +49,10 @@ dd { margin: 2px 0 1em; }
 <p><a href="/en/about/">About</a></p>
 {{ end }}
 
-{{ range .Site.RegularPages }}
+{{ range .Site.RegularPages.ByDate.Reverse }}
+{{ if eq .Lang $.Site.Language.Lang }}
 <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+{{ end }}
 {{ end }}
 
 </td>
@@ -54,7 +60,7 @@ dd { margin: 2px 0 1em; }
 
 {{ if eq .Site.Language.Lang "zh" }}
 
-{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" | where "Lang" .Site.Language.Lang }}
 {{ with $posts }}
 <dl>
 <dt><strong><a href="/zh/posts/">文章</a></strong></dt>
@@ -67,7 +73,7 @@ dd { margin: 2px 0 1em; }
 </dl>
 {{ end }}
 
-{{ $media := where .Site.RegularPages "Section" "media" }}
+{{ $media := where .Site.RegularPages "Section" "media" | where "Lang" .Site.Language.Lang }}
 {{ with $media }}
 <dl>
 <dt><strong><a href="/zh/media/">媒体</a></strong></dt>
@@ -81,7 +87,7 @@ dd { margin: 2px 0 1em; }
 
 {{ else }}
 
-{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $posts := where .Site.RegularPages "Section" "posts" | where "Lang" .Site.Language.Lang }}
 {{ with $posts }}
 <dl>
 <dt><strong><a href="/en/posts/">Posts</a></strong></dt>
@@ -94,7 +100,7 @@ dd { margin: 2px 0 1em; }
 </dl>
 {{ end }}
 
-{{ $media := where .Site.RegularPages "Section" "media" }}
+{{ $media := where .Site.RegularPages "Section" "media" | where "Lang" .Site.Language.Lang }}
 {{ with $media }}
 <dl>
 <dt><strong><a href="/en/media/">Media</a></strong></dt>

@@ -4,7 +4,9 @@
       "a",
       "body",
       "col",
+      "dd",
       "dl",
+      "dt",
       "h1",
       "h2",
       "head",
@@ -26,7 +28,8 @@
     "classes": [
       "heading",
       "lang-switch",
-      "meta"
+      "meta",
+      "small"
     ],
     "ids": [
       "about",

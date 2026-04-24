@@ -1,14 +1,15 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: GlitchMahotsukai/GlitchMahotsukai.github.io
   branch: master
+  base_url: https://glitchmahotsukai.github.io
+  auth_endpoint: oauth
+
+site_url: https://glitchmahotsukai.github.io/
+display_url: https://glitchmahotsukai.github.io/
 
 media_folder: "static/images"
 public_folder: "/images"
-
-locale: "zh"
-
-site_url: https://glitchmahotsukai.netlify.app/
-display_url: https://glitchmahotsukai.netlify.app/
 
 collections:
   - name: "posts"
@@ -49,14 +50,6 @@ collections:
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
       - { label: "正文", name: "body", widget: "markdown", required: false }
-
-  - name: "about"
-    label: "关于"
-    files:
-      - { label: "关于页面", name: "about", file: "content/zh/about/index.md", fields: [
-          { label: "标题", name: "title", widget: "string" },
-          { label: "正文", name: "body", widget: "markdown" }
-        ]}
 
   - name: "posts-en"
     label: "Posts"
