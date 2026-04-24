@@ -1,2 +1,34 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>故障魔法使</title><link>https://glitchmahotsukai.github.io/zh/</link><description>Recent content on 故障魔法使</description><generator>Hugo -- gohugo.io</generator><language>zh</language><lastBuildDate>Fri, 24 Apr 2026 18:23:00 +0800</lastBuildDate><atom:link href="https://glitchmahotsukai.github.io/zh/index.xml" rel="self" type="application/rss+xml"/><item><title>1</title><link>https://glitchmahotsukai.github.io/zh/posts/1/</link><pubDate>Fri, 24 Apr 2026 18:23:00 +0800</pubDate><guid>https://glitchmahotsukai.github.io/zh/posts/1/</guid><description>1</description></item><item><title>日志</title><link>https://glitchmahotsukai.github.io/zh/logs/</link><pubDate>Fri, 24 Apr 2026 18:00:00 +0800</pubDate><guid>https://glitchmahotsukai.github.io/zh/logs/</guid><description>日志 这里是我的日志。</description></item><item><title>关于</title><link>https://glitchmahotsukai.github.io/zh/about/</link><pubDate>Thu, 23 Apr 2026 18:00:00 +0800</pubDate><guid>https://glitchmahotsukai.github.io/zh/about/</guid><description>关于 你好。这是故障魔法使。
-联系方式 QQ : 639116069 GitHub: @your-username 本网站使用 Hugo 构建，支持中英文双语。</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>故障魔法使</title>
+    <link>https://glitchmahotsukai.github.io/zh/</link>
+    <description>Recent content on 故障魔法使</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 24 Apr 2026 18:23:00 +0800</lastBuildDate>
+    <atom:link href="https://glitchmahotsukai.github.io/zh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1</title>
+      <link>https://glitchmahotsukai.github.io/zh/posts/1/</link>
+      <pubDate>Fri, 24 Apr 2026 18:23:00 +0800</pubDate>
+      <guid>https://glitchmahotsukai.github.io/zh/posts/1/</guid>
+      <description>1</description>
+    </item>
+    <item>
+      <title>日志</title>
+      <link>https://glitchmahotsukai.github.io/zh/logs/</link>
+      <pubDate>Fri, 24 Apr 2026 18:00:00 +0800</pubDate>
+      <guid>https://glitchmahotsukai.github.io/zh/logs/</guid>
+      <description>日志 这里是我的日志。</description>
+    </item>
+    <item>
+      <title>关于</title>
+      <link>https://glitchmahotsukai.github.io/zh/about/</link>
+      <pubDate>Thu, 23 Apr 2026 18:00:00 +0800</pubDate>
+      <guid>https://glitchmahotsukai.github.io/zh/about/</guid>
+      <description>关于 你好。这是故障魔法使。
+联系方式 QQ : 639116069 GitHub: @your-username 本网站使用 Hugo 构建，支持中英文双语。</description>
+    </item>
+  </channel>
+</rss>
