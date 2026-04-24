@@ -3,6 +3,8 @@ title = '故障魔法使'
 
 # 多语言配置
 defaultContentLanguage = 'zh'
+defaultContentLanguageInSubdir = true
+
 [languages]
   [languages.zh]
     title = '故障魔法使'
