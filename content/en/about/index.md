@@ -1,20 +1,21 @@
 ---
 title: "About"
 date: 2026-04-23T18:00:00+08:00
+type: "about"
 ---
 
-# About Me
+# About
 
-Hello. This is my personal blog.
+Hello. This is Glitch Mahotsukai.
 
 ## Contact
 
 - Email: your-email@example.com
 - GitHub: @your-username
 
-## Blog Content
+## Content
 
-This blog shares:
+This site shares:
 - Photography
 - Videos
 - Audio/Podcasts
@@ -22,4 +23,4 @@ This blog shares:
 
 ---
 
-This blog is powered by Hugo, supports bilingual (Chinese and English).
+This site is powered by Hugo, supports bilingual (Chinese and English).

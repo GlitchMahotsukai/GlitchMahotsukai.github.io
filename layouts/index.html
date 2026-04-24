@@ -10,7 +10,9 @@ BODY {max-width: 95ch; margin: auto; padding: 0.5em;}
 .small  { font-size: 90%;}
 dd { margin: 2px 0 1em; }
 .lang-switch { text-align: right; margin-bottom: 0.5em; }
-.lang-switch a { text-decoration: none; }
+.lang-switch a { color: blue; text-decoration: underline; }
+.lang-switch strong { color: blue; text-decoration: underline; font-weight: normal; }
+.nav-bar a { color: blue; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -28,9 +30,9 @@ dd { margin: 2px 0 1em; }
 <h1 class="heading">{{ .Site.Title }}</h1>
 
 {{ if eq .Site.Language.Lang "zh" }}
-<p class="heading">最新文章与内容</p>
+<p class="heading">所有代码和文档均在公共领域，除非另有说明</p>
 {{ else }}
-<p class="heading">Latest articles and content</p>
+<p class="heading">Unless specified otherwise, all the code and the documentation on this site is in public domain</p>
 {{ end }}
 
 <table rules="cols" cellpadding="10">
@@ -40,12 +42,12 @@ dd { margin: 2px 0 1em; }
 <td>
 
 {{ if eq .Site.Language.Lang "zh" }}
-<p><em>快捷链接</em></p>
+<p class="nav-bar"><a href="/zh/posts/">文章</a> &nbsp;|&nbsp; <a href="/zh/logs/">日志</a> &nbsp;|&nbsp; <a href="/zh/media/">媒体</a> &nbsp;|&nbsp; <a href="/zh/about/">关于</a></p>
 {{ else }}
-<p><em>Shortcuts</em></p>
+<p class="nav-bar"><a href="/en/posts/">Posts</a> &nbsp;|&nbsp; <a href="/en/logs/">Logs</a> &nbsp;|&nbsp; <a href="/en/media/">Media</a> &nbsp;|&nbsp; <a href="/en/about/">About</a></p>
 {{ end }}
 
-{{ range first 20 .Site.RegularPages }}
+{{ range .Site.RegularPages }}
 <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
 {{ end }}
 
@@ -53,6 +55,7 @@ dd { margin: 2px 0 1em; }
 <td>
 
 {{ if eq .Site.Language.Lang "zh" }}
+
 {{ $posts := where .Site.RegularPages "Section" "posts" }}
 {{ with $posts }}
 <dl>
@@ -66,10 +69,22 @@ dd { margin: 2px 0 1em; }
 </dl>
 {{ end }}
 
-{{ $pages := where .Site.RegularPages "Section" "pages" }}
-{{ with $pages }}
+{{ $media := where .Site.RegularPages "Section" "media" }}
+{{ with $media }}
 <dl>
-<dt><strong><a href="/zh/pages/">页面</a></strong></dt>
+<dt><strong><a href="/zh/media/">媒体</a></strong></dt>
+<dd class="small">
+{{ range . }}
+<a href="{{ .RelPermalink }}">{{ .Title }}</a>;
+{{ end }}
+</dd>
+</dl>
+{{ end }}
+
+{{ $about := where .Site.RegularPages "Section" "about" }}
+{{ with $about }}
+<dl>
+<dt><strong><a href="/zh/about/">关于</a></strong></dt>
 <dd class="small">
 {{ range . }}
 <a href="{{ .RelPermalink }}">{{ .Title }}</a>;
@@ -93,10 +108,22 @@ dd { margin: 2px 0 1em; }
 </dl>
 {{ end }}
 
-{{ $pages := where .Site.RegularPages "Section" "pages" }}
-{{ with $pages }}
+{{ $media := where .Site.RegularPages "Section" "media" }}
+{{ with $media }}
 <dl>
-<dt><strong><a href="/en/pages/">Pages</a></strong></dt>
+<dt><strong><a href="/en/media/">Media</a></strong></dt>
+<dd class="small">
+{{ range . }}
+<a href="{{ .RelPermalink }}">{{ .Title }}</a>;
+{{ end }}
+</dd>
+</dl>
+{{ end }}
+
+{{ $about := where .Site.RegularPages "Section" "about" }}
+{{ with $about }}
+<dl>
+<dt><strong><a href="/en/about/">About</a></strong></dt>
 <dd class="small">
 {{ range . }}
 <a href="{{ .RelPermalink }}">{{ .Title }}</a>;
