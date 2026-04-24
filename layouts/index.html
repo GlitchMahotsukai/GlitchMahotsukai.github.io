@@ -10,15 +10,15 @@ BODY {max-width: 95ch; margin: auto; padding: 0.5em;}
 .small  { font-size: 90%;}
 dd { margin: 2px 0 1em; }
 .lang-nav a { text-decoration: underline; color: #0000cc; }
-.lang-nav a.visited { color: #660099; }
+.lang-nav a:visited { color: #660099; }
 </style>
 </head>
 <body>
 
 <p class="lang-nav" style="text-align: right;">
-{{ if eq .Site.Language.Lang "zh" }}<a href="{{ .Site.BaseURL }}zh/" class="visited">中文</a>{{ else }}<a href="{{ .Site.BaseURL }}zh/">中文</a>{{ end }}
+<a href="/zh/">中文</a>
 |
-{{ if eq .Site.Language.Lang "en" }}<a href="{{ .Site.BaseURL }}en/" class="visited">English</a>{{ else }}<a href="{{ .Site.BaseURL }}en/">English</a>{{ end }}
+<a href="/en/">English</a>
 </p>
 
 <h1 class="heading">{{ .Site.Title }}</h1>
