@@ -9,10 +9,8 @@ type: about
 
 ## 联系方式
 
-* 邮箱：your-email@example.com
+* QQ : 639116069
 * GitHub: @your-username
-
-
 
 - - -
 
