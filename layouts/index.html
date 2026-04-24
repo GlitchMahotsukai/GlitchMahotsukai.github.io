@@ -33,11 +33,21 @@ dd { margin: 2px 0 1em; }
 <tr valign="top">
 <td>
 
+{{ if eq .Site.Language.Lang "zh" }}
+<p><a href="/zh/posts/">文章</a></p>
+<p><a href="/zh/logs/">日志</a></p>
+<p><a href="/zh/media/">媒体</a></p>
+<p><a href="/zh/about/">关于</a></p>
+{{ else }}
+<p><a href="/en/posts/">Posts</a></p>
+<p><a href="/en/logs/">Logs</a></p>
+<p><a href="/en/media/">Media</a></p>
+<p><a href="/en/about/">About</a></p>
+{{ end }}
+
 {{ range .Site.RegularPages }}
 <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
 {{ end }}
-
-<p><a href="/{{ .Site.Language.Lang }}/about/">关于</a></p>
 
 </td>
 <td>
